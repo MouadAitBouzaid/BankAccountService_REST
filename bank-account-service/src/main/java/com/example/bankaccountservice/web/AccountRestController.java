@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@RequestMapping("/api")
 public class AccountRestController {
     private BankAccountRepository bankAccountRepository;
 
@@ -36,7 +37,7 @@ public class AccountRestController {
         if(account.getCreatedAt()!=null) account.setCreatedAt(new Date());
         if(account.getType()!=null) account.setType(bankAccount.getType());
         if(account.getCurrency()!=null) account.setCurrency(bankAccount.getCurrency());
-        return bankAccountRepository.save(account );
+        return bankAccountRepository.save(account);
     }
     @DeleteMapping("/bankAccounts/{id}")
     public void deleteAccount(@PathVariable String id){
