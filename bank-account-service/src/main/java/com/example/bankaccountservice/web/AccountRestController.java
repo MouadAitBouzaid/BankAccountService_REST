@@ -1,25 +1,26 @@
 package com.example.bankaccountservice.web;
 
-import com.example.bankaccountservice.BankAccountServiceApplication;
 import com.example.bankaccountservice.DTO.BankAccountRequestDTO;
 import com.example.bankaccountservice.DTO.BankAccountResponseDTO;
 import com.example.bankaccountservice.entities.BankAccount;
+import com.example.bankaccountservice.mappers.AccountMapper;
 import com.example.bankaccountservice.repositories.BankAccountRepository;
 import com.example.bankaccountservice.service.AccountService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
 public class AccountRestController {
     private BankAccountRepository bankAccountRepository;
     private AccountService accountService;
+    private AccountMapper accountMapper;
 
-    public AccountRestController(BankAccountRepository bankAccountRepository) {
+    public AccountRestController(BankAccountRepository bankAccountRepository, AccountMapper accountMapper) {
         this.bankAccountRepository = bankAccountRepository;
+        this.accountMapper = accountMapper;
         this.accountService = accountService;
     }
     @GetMapping("/bankAccounts")
